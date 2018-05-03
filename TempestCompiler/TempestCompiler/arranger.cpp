@@ -8,7 +8,7 @@
 std::string CodeArranger::getArrangedAssemblyCode()
 {
 	// Concatenates the sections and returns them.
-	return initSection + externSection + dataSection + bssSection + textSection + endSection;
+	return initSection + externSection + dataSection + bssSection + textSection + functionSection + commandSection + endSection;
 }
 
 // Adds code to a specific section.
@@ -28,6 +28,12 @@ void CodeArranger::addToSection(int sectionNumber, std::string text)
 	}
 	else if (sectionNumber == TEXT_SECTION) {
 		textSection += text;
+	}
+	else if (sectionNumber == FUNCTION_SECTION) {
+		functionSection += text;
+	}
+	else if (sectionNumber == COMMAND_SECTION) {
+		commandSection += text;
 	}
 	else if (sectionNumber == END_SECTION) {
 		endSection += text;
@@ -53,9 +59,16 @@ std::string CodeArranger::readSection(int sectionNumber)
 	else if (sectionNumber == TEXT_SECTION) {
 		return textSection;
 	}
+	else if (sectionNumber == FUNCTION_SECTION) {
+		return functionSection;
+	}
+	else if (sectionNumber == COMMAND_SECTION) {
+		return commandSection;
+	}
 	else if (sectionNumber == END_SECTION) {
 		return endSection;
 	}
 
+	// If the parser gets here, you typed the wrong number in.
 	return "ERR";
 }

@@ -4,15 +4,8 @@
 #ifndef CODEARRANGER
 #define CODEARRANGER
 /*
-std::string gAsmTemplate;
-
-std::string
-
-////ASM vvv
-
 "segment.data" //COMPLETE
-"msg : db \"Enter your ID\", 0xA, 0xD, 0; note the null terminator."
-"formatin: db \"%s\", 0; for scanf."
+"msg : db \"Enter your ID\", 0xA, 0xD, 0"
 
 "segment.bss"
 "id : resb 10"
@@ -27,11 +20,6 @@ std::string
 "call _printf"
 "add esp, 4"
 
-"push id; address of number1(second parameter)"
-"push formatin; arguments are pushed right to left(first parameter)"
-"call _scanf"
-"add esp, 8"
-
 "ret";
 */
 
@@ -40,7 +28,9 @@ const int EXTERN_SECTION = 1;
 const int DATA_SECTION = 2;
 const int BSS_SECTION = 3;
 const int TEXT_SECTION = 4;
-const int END_SECTION = 5;
+const int FUNCTION_SECTION = 5;
+const int COMMAND_SECTION = 6;
+const int END_SECTION = 7;
 
 /// Applies additions to the assembly code and arranges it together.
 namespace CodeArranger 
@@ -51,9 +41,11 @@ namespace CodeArranger
 		// The strings that hold the code for each section.
 		std::string initSection = "global _main \n";  // For the initial header stuff at the top
 		std::string externSection = "extern _scanf \n";  // This section is for external C funtions that might be needed.
-		std::string dataSection = "segment .data \nformatin: db \"%s\", 0 \n";  // For const variables.
+		std::string dataSection = "segment .data \nscanIn: db \"%s\", 0 \n";  // For const variables.
 		std::string bssSection = "segment .bss \nid: resb 10 \n";  // For regular variables.
-		std::string textSection = "segment .text \n\t_main: \n\npush id \npush formatin \ncall _scanf \nadd esp, 8 \n";  // The text header.
+		std::string textSection = "segment .text \n\t_main: \n\njmp code \n\n";  // The text header.
+		std::string functionSection = "\tpause: \npush id \npush scanIn \ncall _scanf \nadd esp, 8 \n\tret \n\n";  // The text header.
+		std::string commandSection = "\tcode: \ncall pause \ncall pause \n";  // The text header.
 		std::string endSection = "\nret";  // This is needed at the end.  // DON'T CHANGE THIS! 
 	}
 

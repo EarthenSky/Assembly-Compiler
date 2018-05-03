@@ -1,14 +1,23 @@
 global _main 
 extern _scanf 
-extern _printf 
 segment .data 
-formatin: db "%s", 0 
+scanIn: db "%s", 0 
 segment .bss 
 id: resb 10 
 segment .text 
 	_main: 
+
+jmp code 
+
+	pause: 
 push id 
-push formatin 
+push scanIn 
 call _scanf 
 add esp, 8 
+	ret 
+
+	code: 
+call pause 
+call pause 
+
 ret

@@ -15,7 +15,8 @@ namespace CodeInserter
 	{	
 		bool printIsActive = false;
 		std::string printExtern = "extern _printf";  //TODO: this.
-		std::string printBody = "push msg \ncall _printf \nadd esp, 4";
+		std::string printVariable = "msg: db \"Enter your ID\", 0xA, 0xD, 0";  //TODO: this.
+		std::string printFunction = "\tprint: \npush msg \ncall _printf \nadd esp, 4 \n\tret";
 	}
 
 	void insertPrint() 
@@ -27,7 +28,7 @@ namespace CodeInserter
 		}
 
 		// Add the function call to the code.
-		CodeArranger::addToSection(TEXT_SECTION, printBody);
+		CodeArranger::addToSection(FUNCTION_SECTION, printFunction);
 	}
 }
 
