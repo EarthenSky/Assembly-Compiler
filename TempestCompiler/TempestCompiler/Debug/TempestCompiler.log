@@ -1,0 +1,7 @@
+﻿  stdafx.cpp
+  TempestCompiler.cpp
+  arranger.cpp
+  arranger.h
+  Generating Code...
+Debug\arranger.obj : warning LNK4042: object specified more than once; extras ignored
+  TempestCompiler.vcxproj -> C:\Users\gabeg\Desktop\Programs\CompilerVS\TempestCompiler\Debug\TempestCompiler.exe
