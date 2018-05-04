@@ -41,5 +41,8 @@
     <ClCompile Include="arranger.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="separater.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

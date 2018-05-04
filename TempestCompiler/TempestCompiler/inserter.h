@@ -12,7 +12,7 @@ namespace CodeInserter
 {
 	// The Private Section.
 	namespace
-	{	
+	{
 		bool printIsActive = false;
 		std::string printExtern = "extern _printf";  //TODO: this.
 		std::string printVariable = "msg: db \"Enter your ID\", 0xA, 0xD, 0";  //TODO: this.
@@ -24,7 +24,12 @@ namespace CodeInserter
 		// Check if function exists yet.
 		if (printIsActive == false)
 		{
-			// insert the function into the function section.
+			printIsActive = true;
+
+			// Insert the function into the function section and add the extern reference.
+			CodeArranger::addToSection(EXTERN_SECTION, printFunction);
+
+			CodeArranger::addToSection(FUNCTION_SECTION, printFunction);
 		}
 
 		// Add the function call to the code.

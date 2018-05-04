@@ -1,6 +1,2 @@
-﻿  stdafx.cpp
-  TempestCompiler.cpp
-  arranger.cpp
-  arranger.h
-  Generating Code...
+﻿  TempestCompiler.cpp
   TempestCompiler.vcxproj -> C:\_Programming\GitHub\Assembly-Compiler\TempestCompiler\Debug\TempestCompiler.exe
