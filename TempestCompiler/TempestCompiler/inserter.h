@@ -3,8 +3,8 @@
 
 #include "arranger.h"
 
-#ifndef CODEINSERTER
-#define CODEINSERTER
+#ifndef CODEINSERTER2
+#define CODEINSERTER2
 
 /// Choses code to give to the arranger and insert into assembly, based off what the separater tells it.
 /// i.e. inserts 'sort of' code snipets and fills them out, before passing them to the arranger.
@@ -19,22 +19,23 @@ namespace CodeInserter
 		std::string printFunction = "\tprint: \npush msg \ncall _printf \nadd esp, 4 \n\tret";
 	}
 
-	void insertPrint() 
-	{
-		// Check if function exists yet.
-		if (printIsActive == false)
-		{
-			printIsActive = true;
-
-			// Insert the function into the function section and add the extern reference.
-			CodeArranger::addToSection(EXTERN_SECTION, printFunction);
-
-			CodeArranger::addToSection(FUNCTION_SECTION, printFunction);
-		}
-
-		// Add the function call to the code.
-		CodeArranger::addToSection(FUNCTION_SECTION, printFunction);
-	}
+	void insertPrint();
 }
 
+void CodeInserter::insertPrint()
+{
+	// Check if function exists yet.
+	if (printIsActive == false)
+	{
+		printIsActive = true;
+
+		// Insert the function into the function section and add the extern reference.
+		CodeArranger::addToSection(EXTERN_SECTION, printFunction);
+
+		CodeArranger::addToSection(FUNCTION_SECTION, printFunction);
+	}
+
+	// Add the function call to the code.
+	CodeArranger::addToSection(FUNCTION_SECTION, printFunction);
+}
 #endif

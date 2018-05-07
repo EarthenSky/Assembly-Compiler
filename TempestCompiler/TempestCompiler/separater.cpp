@@ -13,7 +13,10 @@ void CodeSeparater::checkLine(char c)
 		findInitKeyword(c);
 	}
 	else if(currentTask == FIND_GLOBAL_ITEM) {
-		findInitKeyword(c);
+		findGlobalItem(c);
+	}
+	else if (currentTask == READ_TEXT) {
+		readText(c);
 	}
 }
 
@@ -85,4 +88,20 @@ void CodeSeparater::lookForGlobalFunction(std::string functionName)
 	}
 
 	//TODO: insert user defined namespaces.
+}
+
+void CodeSeparater::readText(char c)
+{
+	if (c == ')') {
+		// Insert the print statement with the inserter.
+		//CodeInserter::insertPrint();
+
+		currentTask = FIND_INIT_KEYWORD;
+
+		lastKeyword = "";  // Reset the last keyword.
+		printString = "";  // Flush last string.
+	}	
+	else {
+		printString += c;
+	}
 }

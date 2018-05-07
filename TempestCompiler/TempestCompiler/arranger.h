@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include <string>
 
-#ifndef CODEARRANGER
-#define CODEARRANGER
+#ifndef CODEARRANGER23
+#define CODEARRANGER23
+
 /*
 "segment.data" //COMPLETE
 "msg : db \"Enter your ID\", 0xA, 0xD, 0"
@@ -56,7 +57,6 @@ namespace CodeArranger
 
 	// This function is used to read code from the different sections.
 	std::string readSection(int sectionNumber);
-
 };
 
 #endif 

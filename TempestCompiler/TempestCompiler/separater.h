@@ -3,13 +3,14 @@
 
 #include "inserter.h"
 
-#ifndef CODESEPARATER
-#define CODESEPARATER
+#ifndef CODESEPARATER2
+#define CODESEPARATER2
 
 const int FIND_INIT_KEYWORD = 0;
 const int FIND_GLOBAL_ITEM = 1;  // Looks for a variable or function in the global (or 'tem' [tempest]) namespace.
-const int FUNCTION_DEFINITION = 2;
-const int VARIABLE_DEFINITION = 3;
+const int READ_TEXT = 2;
+const int FUNCTION_DEFINITION = 4;
+const int VARIABLE_DEFINITION = 5;
 
 /// Reads the tempest file and separates it into sections.
 namespace CodeSeparater
@@ -22,6 +23,7 @@ namespace CodeSeparater
 
 		// Hold the text that was parsed before a key point was reached.
 		std::string lastKeyword = "";
+		std::string printString = "";
 
 		// The name of the print function.
 		std::string printFunctionName = "print";
@@ -42,6 +44,9 @@ namespace CodeSeparater
 
 	// This function looks for a global (or tempest/pre-built namespace) function.  ex. 'print()'
 	void lookForGlobalFunction(std::string functionName);
+
+	// This code reads the text that is in a call to the print function.
+	void readText(char c);
 }
 
 #endif
