@@ -46,8 +46,8 @@ namespace CodeArranger
 		std::string bssSection = "segment .bss \nid: resb 10 \n";  // For regular variables.
 		std::string textSection = "segment .text \n\t_main: \n\njmp code \n\n";  // The text header.
 		std::string functionSection = "\tpause: \npush id \npush scanIn \ncall _scanf \nadd esp, 8 \n\tret \n\n";  // The text header.
-		std::string commandSection = "\tcode: \ncall pause \ncall pause \n";  // The text header.
-		std::string endSection = "\nret";  // This is needed at the end.  // DON'T CHANGE THIS! 
+		std::string commandSection = "\tcode: \n";  // The text header.
+		std::string endSection = "\ncall pause \nret";  // This is needed at the end.  // DON'T CHANGE THIS! 
 	}
 
 	std::string getArrangedAssemblyCode();  // Returns all code sections mashed together.

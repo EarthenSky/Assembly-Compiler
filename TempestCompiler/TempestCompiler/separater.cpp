@@ -3,7 +3,11 @@
 #include <iostream>
 #include <string>
 
+#include "inserter.h"
 #include "separater.h"
+
+#ifndef CODESEPARATERBODY
+#define CODESEPARATERBODY
 
 // Parses the next character of Tempest code.
 void CodeSeparater::checkLine(char c)
@@ -33,6 +37,7 @@ void CodeSeparater::findInitKeyword(char c) {
 	else if (c == '/') {
 		// if the parser finds a forward slash, that means that the line is a namespace reference.
 		lookForNamespaceVar(lastKeyword);
+		//std::cout << lastKeyword << '\n';
 	}
 	else {
 		// Only add a char to the keyword if it is not whitespace.  Keywords cannot be whitespace.
@@ -40,15 +45,18 @@ void CodeSeparater::findInitKeyword(char c) {
 			lastKeyword += c;
 		}
 
-		std::cout << lastKeyword;
+		//std::cout << lastKeyword;
 	}
 }
 
 // Can only find the print function right now.
 void CodeSeparater::findGlobalItem(char c) {
+	std::cout << c << '\n';
 	if (c == '(') {
+		std::cout << "GRAAAH" << '\n' << lastKeyword << '\n';
 		// If the parser finds a start paren, that means that the last section of code was a function's name.
 		lookForGlobalFunction(lastKeyword);
+		
 	}
 	else if (c == ' ') {
 		// White space is not allowed in function names.  Give error.
@@ -77,9 +85,9 @@ void CodeSeparater::lookForNamespaceVar(std::string namespaceName)
 
 void CodeSeparater::lookForGlobalFunction(std::string functionName)
 {
-	// If the namespace name is tem, (aka tempest or the global namespace,) change the current task.
+	// If the function name is print, start getting the print characters.
 	if (functionName == printFunctionName) {
-		currentTask = FIND_GLOBAL_ITEM;
+		currentTask = READ_TEXT;
 		lastKeyword = "";  // Reset the last keyword.
 	}
 	else {
@@ -94,7 +102,7 @@ void CodeSeparater::readText(char c)
 {
 	if (c == ')') {
 		// Insert the print statement with the inserter.
-		//CodeInserter::insertPrint();
+		CodeInserter::insertPrint(printString);
 
 		currentTask = FIND_INIT_KEYWORD;
 
@@ -105,3 +113,5 @@ void CodeSeparater::readText(char c)
 		printString += c;
 	}
 }
+
+#endif

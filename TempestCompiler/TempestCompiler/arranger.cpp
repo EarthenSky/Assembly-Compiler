@@ -3,6 +3,9 @@
 
 #include "arranger.h"
 
+#ifndef CODEARRANGERBODY
+#define CODEARRANGERBODY
+
 /// This function arranges all code sections and returns it.
 /// The code returned from this function will be converted into an exe file.
 std::string CodeArranger::getArrangedAssemblyCode()
@@ -72,3 +75,5 @@ std::string CodeArranger::readSection(int sectionNumber)
 	// If the parser gets here, you typed the wrong number in.
 	return "ERR";
 }
+
+#endif

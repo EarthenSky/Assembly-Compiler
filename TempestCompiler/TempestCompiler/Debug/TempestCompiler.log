@@ -1,6 +1,4 @@
-﻿  separater.cpp
-  TempestCompiler.cpp
+﻿  TempestCompiler.cpp
+  separater.cpp
   Generating Code...
-TempestCompiler.obj : error LNK2005: "void __cdecl CodeInserter::insertPrint(void)" (?insertPrint@CodeInserter@@YAXXZ) already defined in separater.obj
-Debug\arranger.obj : warning LNK4042: object specified more than once; extras ignored
-C:\_Programming\GitHub\Assembly-Compiler\TempestCompiler\Debug\TempestCompiler.exe : fatal error LNK1169: one or more multiply defined symbols found
+  TempestCompiler.vcxproj -> C:\_Programming\GitHub\Assembly-Compiler\TempestCompiler\Debug\TempestCompiler.exe

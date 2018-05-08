@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include <string>
 
-#include "inserter.h"
-
 #ifndef CODESEPARATER2
 #define CODESEPARATER2
 
