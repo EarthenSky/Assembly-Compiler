@@ -41,7 +41,9 @@ void CodeArranger::addToSection(int sectionNumber, std::string text)
 	else if (sectionNumber == END_SECTION) {
 		endSection += text;
 	}
-	std::cout << "ERR: wrong section number." << '\n';
+	else {
+		std::cout << "ERR 7: wrong section number." << '\n';
+	}
 }
 
 // This function is used to read code from the different sections.
